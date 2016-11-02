@@ -8,14 +8,14 @@ var Day = React.createClass({
   displayName: 'Day',
 
   render() {
-    var i = this.props.i;
-    var w = this.props.w;
+    var i = this.props['data-i'];
+    var w = this.props['data-w'];
     var prevMonth = (w === 0 && i > 7);
     var nextMonth = (w >= 4 && i <= 14);
     var cn = cx({
       'prev-month': prevMonth,
       'next-month': nextMonth,
-      'current-day': !prevMonth && !nextMonth && (i === this.props.d)
+      'current-day': !prevMonth && !nextMonth && (i === this.props['data-d'])
     });
 
     return <td className={cn} {... this.props}>{i}</td>;
@@ -63,7 +63,7 @@ module.exports = React.createClass({
             {chunk(days, 7).map((row, w) => (
               <tr key={w}>
                 {row.map((i) => (
-                  <Day key={i} i={i} d={d} w={w}
+                  <Day key={i} data-i={i} data-d={d} data-w={w}
                     onClick={this.selectDate.bind(null, i, w)}
                   />
                 ))}
