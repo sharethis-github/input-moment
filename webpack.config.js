@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'development',
   entry: {
     'dist/input-moment': './index.js',
     'example/bundle': './example/app.js',
@@ -8,9 +9,8 @@ module.exports = {
     filename: '[name].js'
   },
   module: {
-    loaders: [
+    rules: [
       {test: /\.js$/, loader: 'babel-loader'},
-      {test: /\.json$/, loader: 'json-loader'},
       {test: /\.css$/, loader: "style-loader!css-loader"},
       {test: /\.less$/, loader: "style-loader!css-loader!less-loader"}
     ]

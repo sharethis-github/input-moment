@@ -1,8 +1,7 @@
 var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
-var range = require('lodash/utility/range');
-var chunk = require('lodash/array/chunk');
+var lodash = require('lodash');
 
 var Day = React.createClass({
   displayName: 'Day',
@@ -33,9 +32,9 @@ module.exports = React.createClass({
     var d3 = m.clone().endOf('month').date();
 
     var days = [].concat(
-      range(d1-d2+1, d1+1),
-      range(1, d3+1),
-      range(1, 42-d3-d2+1)
+      lodash.range(d1-d2+1, d1+1),
+      lodash.range(1, d3+1),
+      lodash.range(1, 42-d3-d2+1)
     );
 
     var weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -60,7 +59,7 @@ module.exports = React.createClass({
           </thead>
 
           <tbody>
-            {chunk(days, 7).map((row, w) => (
+            {lodash.chunk(days, 7).map((row, w) => (
               <tr key={w}>
                 {row.map((i) => (
                   <Day key={i} data-i={i} data-d={d} data-w={w}

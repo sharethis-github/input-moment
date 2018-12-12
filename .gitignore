@@ -29,3 +29,9 @@ node_modules
 .publish
 
 example/bundle*
+
+# package
+package-lock.json
+
+# in editing
+*.swp
